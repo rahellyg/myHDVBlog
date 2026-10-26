@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>חיים בקצב שלי | בלוג ווולוג על חיים עם ADHD</title>
+  <meta name="description" content="בלוג אישי על החיים והיומיום של אמא לארבעה, עובדת במשרה מלאה, עם הפרעת קשב וריכוז. בלוגים, וולוגים, תמונות וטיפים." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gveret+Levin&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=15" />
+</head>
+<body>
+
+  <!-- ===== סרגל עליון ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#top">
+        <span class="logo-icon">🧠</span>
+        <span class="logo-text">חיים בקצב שלי</span>
+      </a>
+      <nav class="main-nav">
+        <a href="#feed">הפוסטים</a>
+        <a href="#about">קצת עליי</a>
+        <a href="#wellness">חיים בריאים</a>
+        <a href="#qa">שאלה/תשובה</a>
+        <button class="btn btn-primary owner-only" id="open-post-form" type="button">+ פוסט חדש</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== כותרת הדף ===== -->
+  <section class="hero" id="top">
+    <div class="container hero-inner">
+      <div class="hero-photo">
+        <span aria-hidden="true">🧠</span>
+        <img src="WhatsApp%20Image%202026-10-26%20at%2012.40.36.jpeg" alt="התמונה שלי" onerror="this.remove()" />
+      </div>
+      <p class="hero-kicker">🌿 בוקר טוב, שוב 🌿</p>
+      <h1>חיים בקצב שלי</h1>
+      <p class="hero-tagline">אמא לארבעה, במשרה מלאה, ועם מוח שרץ במהירות אחרת</p>
+      <p class="hero-sub">
+        כאן אני משתפת כל יום איך עבר עליי הבוקר, מה הצליח ומה פחות —
+        עם תמונות, וולוגים וטיפים שאני לומדת (ומבקשת!) בדרך.
+        בלי פילטרים — חיים אמיתיים עם ADHD.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#feed">לקרוא את הפוסטים</a>
+        <a class="btn btn-ghost" href="#about">להכיר אותי</a>
+      </div>
+      <div class="hero-card" aria-hidden="true">
+        <div class="hero-card-item">☕ קפה ראשון — 06:40</div>
+        <div class="hero-card-item">🎒 ארבעה תיקים — מוכנים (כמעט)</div>
+        <div class="hero-card-item">🔑 איפה המפתחות? — שוב</div>
+        <div class="hero-card-item">💪 יצאנו מהבית — 07:58!</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== פיד הפוסטים ===== -->
+  <main class="container" id="feed">
+    <div class="section-head">
+      <h2>היומן שלי</h2>
+      <p>בלוגים, וולוגים, תמונות ובקשות טיפים — הכל במקום אחד.</p>
+    </div>
+
+    <div class="filters" role="tablist">
+      <button class="filter-btn active" data-filter="all" type="button">הכול</button>
+      <button class="filter-btn" data-filter="blog" type="button">✍️ בלוגים</button>
+      <button class="filter-btn" data-filter="vlog" type="button">🎬 וולוגים</button>
+      <button class="filter-btn" data-filter="photo" type="button">📸 תמונות</button>
+      <button class="filter-btn" data-filter="tips" type="button">💡 בקשות לטיפים</button>
+    </div>
+
+    <div class="posts-grid" id="posts-grid" aria-live="polite"></div>
+    <p class="empty-state" id="empty-state" hidden>עדיין אין כאן פוסטים… לחצי על «+ פוסט חדש» כדי להתחיל! 🌱</p>
+  </main>
+
+  <!-- ===== קצת עליי ===== -->
+  <section class="about" id="about">
+    <div class="container about-inner">
+      <div class="about-photo">
+        <span aria-hidden="true">👩‍👧‍👦</span>
+        <img src="WhatsApp%20Image%202026-10-26%20at%2012.40.36.jpeg" alt="התמונה שלי" onerror="this.remove()" />
+      </div>
+      <div class="about-text">
+        <h2>קצת עליי</h2>
+        <p>
+          נעים מאוד! אמא לארבעה, גרה במושב השקט והפסטורלי לבנים,
+          ועובדת במשרה מלאה בחברת הייטק — כן, עם הפרעת קשב וריכוז,
+          אז אתן מבינות איך נראה כל בוקר אצלי 😅
+        </p>
+        <p>
+          אשכנזייה חרדית, נשואה לתימני חולה ניקיון —
+          ביחד אנחנו קומדיה של ממש, עם ארבעה ילדים והמון אהבה.
+        </p>
+        <p>
+          התחלתי את הבלוג כדי לתעד את המסע שלי, לשתף מה עובד לי
+          (ומה ממש לא), ובעיקר — למצוא את הדרכים שלי לשלווה אמיתית
+          ופנימית, מבפנים. אם גם את/ה בדרך — בואו נכיר! 💛
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== שיתוף: דף שאני ממליצה עליו ===== -->
+  <section class="share" id="share">
+    <div class="container">
+      <div class="share-inner">
+        <div class="share-icon" aria-hidden="true">🌿</div>
+        <div class="share-text">
+          <p class="share-kicker">שיתוף מהלב 💛</p>
+          <h2>דף שאני ממליצה עליו: מטפל ברפואה סינית</h2>
+          <p>
+            מדי פעם אני משתפת כאן דפים שעושים לי טוב.
+            הפעם — דף של מטפל ברפואה סינית שמלווה אותי
+            בדרך לשלווה אמיתית ופנימית. ממליצה בחום!
+          </p>
+          <a class="btn btn-ghost" href="https://www.facebook.com/tomerccm/" target="_blank" rel="noopener" id="share-link">לביקור בדף הפייסבוק שלו ↗</a>
+        </div>
+      </div>
+
+      <!-- המלצות נוספות -->
+      <div class="recs-wrap">
+        <div class="recs-head">
+          <h3>ועוד המלצות מהלב ✨</h3>
+          <button class="btn btn-ghost owner-only" id="open-rec-form" type="button">+ המלצה חדשה</button>
+        </div>
+        <div class="recs-grid" id="recs-grid"></div>
+        <p class="recs-empty" id="recs-empty" hidden>עוד אין כאן המלצות — בקרוב! 🌱</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== חיים בריאים: גוף ונפש דרך הטבע ===== -->
+  <section class="wellness" id="wellness">
+    <div class="container">
+      <div class="section-head">
+        <p class="wellness-kicker">🌱 גוף ונפש דרך הטבע</p>
+        <h2>חיים בריאים</h2>
+        <p>כתבות קצרות על מה שלמדתי שעוזר — בדרך הטבע, לא תרופתית.</p>
+        <button class="btn btn-primary owner-only" id="open-article-form" type="button">+ כתבה חדשה</button>
+      </div>
+      <div class="wellness-grid" id="wellness-grid"></div>
+    </div>
+  </section>
+
+  <!-- ===== שאלות ותשובות ===== -->
+  <section class="qa" id="qa">
+    <div class="container">
+      <div class="section-head">
+        <h2>שאלה תשובה 💬</h2>
+        <p>יש לך שאלה? טיפ משלך? נושא שתרצי שארחיב עליו? כתבי כאן — אני עונה אישית.</p>
+      </div>
+      <form class="qa-form" id="qa-form">
+        <input type="text" id="qa-name" placeholder="השם שלך" required />
+        <input type="email" id="qa-email" placeholder="האימייל שלך (כדי שאוכל לחזור אלייך)" required />
+        <textarea id="qa-text" rows="4" placeholder="שאלה, טיפ או נושא להרחבה…" required></textarea>
+        <button class="btn btn-primary" type="submit">שליחה 📮</button>
+      </form>
+      <div class="qa-list" id="qa-list"></div>
+      <p class="recs-empty" id="qa-empty" hidden>עוד אין שאלות — היי הראשונה לשאול! ✨</p>
+    </div>
+  </section>
+
+  <!-- ===== קריאה לפעולה: טיפים ===== -->
+  <section class="tips-cta" id="tips-cta">
+    <div class="container tips-cta-inner">
+      <h2>יש לך טיפ בשבילי?</h2>
+      <p>איך יוצאים מהבית בזמן? איך זוכרים הכול? אני תמיד שמחה לשמוע — שאלות, טיפים ונושאים להרחבה עוברים למדור שאלה תשובה 💬</p>
+      <a class="btn btn-light" href="#qa">💬 לשאלה, טיפ או נושא להרחבה</a>
+    </div>
+  </section>
+
+  <!-- ===== פוטר ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> חיים בקצב שלי — נכתב מהלב (ובין פגישה לצ׳ופר).</p>
+      <p class="footer-note">האתר נבנה באהבה. הפוסטים נשמרים אצלך בדפדפן.</p>
+      <p class="footer-credit">נוצר על ידי <a href="https://rahellyg.github.io/busipro/" target="_blank" rel="noopener">ביזנס פרו</a> 💼</p>
+      <button class="link-btn" id="owner-login" type="button">🔒 כניסת בעלת הבלוג</button>
+    </div>
+  </footer>
+
+  <!-- ===== חלונית פוסט חדש ===== -->
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-head">
+        <h3 id="modal-title">פוסט חדש</h3>
+        <button class="modal-close" id="close-modal" type="button" aria-label="סגירה">✕</button>
+      </div>
+      <form id="post-form">
+        <label>
+          סוג הפוסט
+          <select id="post-type" required>
+            <option value="blog">✍️ בלוג — איך עבר עליי הבוקר</option>
+            <option value="vlog">🎬 וולוג — סרטון</option>
+            <option value="photo">📸 תמונה</option>
+            <option value="tips">💡 בקשת טיפ מהקהילה</option>
+          </select>
+        </label>
+        <label>
+          כותרת
+          <input type="text" id="post-title" placeholder="למשל: הבוקר הצלחנו לצאת בזמן!" required />
+        </label>
+        <label>
+          מה קרה היום?
+          <textarea id="post-content" rows="5" placeholder="ספרי איך היה הבוקר, מה עבד, מה לא…" required></textarea>
+        </label>
+        <label id="media-url-label">
+          קישור לסרטון, תמונה או דף פייסבוק — לא חובה
+          <input type="url" id="post-media-url" placeholder="https://www.facebook.com/... או https://www.youtube.com/..." />
+        </label>
+        <label>
+          או העלאת תמונה מהמכשיר — לא חובה
+          <input type="file" id="post-media-file" accept="image/*" />
+        </label>
+        <button class="btn btn-primary btn-full" type="submit">פרסום 🎉</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== חלונית כניסת בעלת הבלוג ===== -->
+  <div class="modal-backdrop" id="login-backdrop" hidden>
+    <div class="modal modal-small" role="dialog" aria-modal="true" aria-labelledby="login-title">
+      <div class="modal-head">
+        <h3 id="login-title">🔒 כניסת בעלת הבלוג</h3>
+        <button class="modal-close" id="close-login" type="button" aria-label="סגירה">✕</button>
+      </div>
+      <form id="login-form">
+        <label>
+          אימייל
+          <input type="email" id="owner-email" placeholder="האימייל שלך" autocomplete="username" required />
+        </label>
+        <label>
+          סיסמה
+          <input type="password" id="owner-password" placeholder="הסיסמה שיצרת ב-Supabase" autocomplete="current-password" required />
+        </label>
+        <p class="login-error" id="login-error" hidden>סיסמה שגויה, נסי שוב 🙂</p>
+        <button class="btn btn-primary btn-full" type="submit">כניסה</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== חלונית כתבה חדשה — חיים בריאים ===== -->
+  <div class="modal-backdrop" id="article-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title">
+      <div class="modal-head">
+        <h3 id="article-modal-title">🌱 כתבה חדשה — חיים בריאים</h3>
+        <button class="modal-close" id="close-article-modal" type="button" aria-label="סגירה">✕</button>
+      </div>
+      <form id="article-form">
+        <label>
+          אייקון (אמוג׳י) — לא חובה
+          <input type="text" id="article-icon" placeholder="🌿" maxlength="4" />
+        </label>
+        <label>
+          כותרת
+          <input type="text" id="article-title" placeholder="למשל: תה קמומיל לפני השינה" required />
+        </label>
+        <label>
+          מה למדתי שעוזר?
+          <textarea id="article-content" rows="5" placeholder="ספרי מה עובד לך, איך משתמשים, למה זה עוזר…" required></textarea>
+        </label>
+        <label>
+          קישור לתמונה או סרטון — לא חובה
+          <input type="url" id="article-media" placeholder="https://www.youtube.com/... או קישור לתמונה" />
+        </label>
+        <button class="btn btn-primary btn-full" type="submit">פרסום 🌿</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== חלונית המלצה חדשה ===== -->
+  <div class="modal-backdrop" id="rec-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="rec-modal-title">
+      <div class="modal-head">
+        <h3 id="rec-modal-title">✨ המלצה חדשה</h3>
+        <button class="modal-close" id="close-rec-modal" type="button" aria-label="סגירה">✕</button>
+      </div>
+      <form id="rec-form">
+        <label>
+          אייקון (אמוג׳י) — לא חובה
+          <input type="text" id="rec-icon" placeholder="💛" maxlength="4" />
+        </label>
+        <label>
+          על מה אני ממליצה?
+          <input type="text" id="rec-title" placeholder="למשל: ספר ששינה לי את הבוקר" required />
+        </label>
+        <label>
+          למה כדאי?
+          <textarea id="rec-text" rows="4" placeholder="כמה מילים על למה את ממליצה על זה…" required></textarea>
+        </label>
+        <label>
+          קישור
+          <input type="url" id="rec-url" placeholder="https://www.facebook.com/... או כל אתר אחר" required />
+        </label>
+        <button class="btn btn-primary btn-full" type="submit">הוספה 💛</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/script.js?v=11"></script>
+</body>
+</html>
