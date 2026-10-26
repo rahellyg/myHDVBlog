@@ -43,6 +43,16 @@ create table if not exists recs (
   created_at timestamptz not null default now()
 );
 
+-- הקישור הקבוע באזור "שיתוף מהלב"
+create table if not exists featured_share (
+  id text primary key check (id = 'main'),
+  url text not null
+);
+
+insert into featured_share (id, url)
+values ('main', 'https://www.facebook.com/tomerccm/')
+on conflict (id) do nothing;
+
 -- שאלה/תשובה
 create table if not exists questions (
   id text primary key,
@@ -58,21 +68,39 @@ alter table posts enable row level security;
 alter table comments enable row level security;
 alter table articles enable row level security;
 alter table recs enable row level security;
+alter table featured_share enable row level security;
 alter table questions enable row level security;
 
 -- קריאה פתוחה לכולם
+drop policy if exists "public read posts" on posts;
+drop policy if exists "public read comments" on comments;
+drop policy if exists "public read articles" on articles;
+drop policy if exists "public read recs" on recs;
+drop policy if exists "public read featured share" on featured_share;
+drop policy if exists "public read questions" on questions;
 create policy "public read posts" on posts for select using (true);
 create policy "public read comments" on comments for select using (true);
 create policy "public read articles" on articles for select using (true);
 create policy "public read recs" on recs for select using (true);
+create policy "public read featured share" on featured_share for select using (true);
 create policy "public read questions" on questions for select using (true);
 
 -- כתיבת תוכן (פוסטים/כתבות/המלצות/תשובות) — רק למשתמשת מחוברת
+drop policy if exists "owner write posts" on posts;
+drop policy if exists "owner write articles" on articles;
+drop policy if exists "owner write recs" on recs;
+drop policy if exists "owner write featured share" on featured_share;
 create policy "owner write posts" on posts for all using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
 create policy "owner write articles" on articles for all using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
 create policy "owner write recs" on recs for all using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
+create policy "owner write featured share" on featured_share for all using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
 
 -- גולשים: רק להוסיף תגובה/שאלה/לייק
+drop policy if exists "anyone add comment" on comments;
+drop policy if exists "anyone ask question" on questions;
+drop policy if exists "anyone like post" on posts;
+drop policy if exists "owner answer question" on questions;
+drop policy if exists "owner delete question" on questions;
 create policy "anyone add comment" on comments for insert with check (true);
 create policy "anyone ask question" on questions for insert with check (true);
 create policy "anyone like post" on posts for update using (true) with check (true);

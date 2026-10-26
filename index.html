@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Gveret+Levin&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=15" />
+  <link rel="stylesheet" href="css/style.css?v=19" />
 </head>
 <body>
 
@@ -16,7 +16,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="logo" href="#top">
-        <span class="logo-icon">🧠</span>
+        <span class="logo-icon"></span>
         <span class="logo-text">חיים בקצב שלי</span>
       </a>
       <nav class="main-nav">
@@ -31,11 +31,10 @@
 
   <!-- ===== כותרת הדף ===== -->
   <section class="hero" id="top">
+    <div class="hero-banner">
+      <img src="banner.png" alt="חיים בקצב שלי — שגרת בוקר" />
+    </div>
     <div class="container hero-inner">
-      <div class="hero-photo">
-        <span aria-hidden="true">🧠</span>
-        <img src="WhatsApp%20Image%202026-10-26%20at%2012.40.36.jpeg" alt="התמונה שלי" onerror="this.remove()" />
-      </div>
       <p class="hero-kicker">🌿 בוקר טוב, שוב 🌿</p>
       <h1>חיים בקצב שלי</h1>
       <p class="hero-tagline">אמא לארבעה, במשרה מלאה, ועם מוח שרץ במהירות אחרת</p>
@@ -81,7 +80,7 @@
     <div class="container about-inner">
       <div class="about-photo">
         <span aria-hidden="true">👩‍👧‍👦</span>
-        <img src="WhatsApp%20Image%202026-10-26%20at%2012.40.36.jpeg" alt="התמונה שלי" onerror="this.remove()" />
+        <img src="profile.jpeg" alt="התמונה שלי" onerror="this.remove()" />
       </div>
       <div class="about-text">
         <h2>קצת עליי</h2>
@@ -117,6 +116,7 @@
             בדרך לשלווה אמיתית ופנימית. ממליצה בחום!
           </p>
           <a class="btn btn-ghost" href="https://www.facebook.com/tomerccm/" target="_blank" rel="noopener" id="share-link">לביקור בדף הפייסבוק שלו ↗</a>
+          <button class="btn btn-ghost owner-only" id="edit-share-link" type="button">✏️ עריכת הקישור</button>
         </div>
       </div>
 
@@ -242,6 +242,23 @@
     </div>
   </div>
 
+  <!-- ===== עריכת קישור מומלץ ===== -->
+  <div class="modal-backdrop" id="share-link-backdrop" hidden>
+    <div class="modal modal-small" role="dialog" aria-modal="true" aria-labelledby="share-link-title">
+      <div class="modal-head">
+        <h3 id="share-link-title">עריכת הקישור המומלץ</h3>
+        <button class="modal-close" id="close-share-link-modal" type="button" aria-label="סגירה">✕</button>
+      </div>
+      <form id="share-link-form">
+        <label>
+          כתובת הקישור
+          <input type="url" id="share-link-url" placeholder="https://..." required />
+        </label>
+        <button class="btn btn-primary btn-full" type="submit">שמירת הקישור</button>
+      </form>
+    </div>
+  </div>
+
   <!-- ===== חלונית כתבה חדשה — חיים בריאים ===== -->
   <div class="modal-backdrop" id="article-backdrop" hidden>
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="article-modal-title">
@@ -303,6 +320,6 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/script.js?v=11"></script>
+  <script src="js/script.js?v=12"></script>
 </body>
 </html>

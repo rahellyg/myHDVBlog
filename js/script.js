@@ -34,6 +34,9 @@
   const recsEmpty = document.getElementById("recs-empty");
   const recBackdrop = document.getElementById("rec-backdrop");
   const recForm = document.getElementById("rec-form");
+  const shareLink = document.getElementById("share-link");
+  const shareLinkBackdrop = document.getElementById("share-link-backdrop");
+  const shareLinkForm = document.getElementById("share-link-form");
   const qaList = document.getElementById("qa-list");
   const qaEmpty = document.getElementById("qa-empty");
   const qaForm = document.getElementById("qa-form");
@@ -47,14 +50,15 @@
 
   /* ----- טעינת כל התוכן מהענן ----- */
   async function loadAll() {
-    const [p, c, a, r, q] = await Promise.all([
+    const [p, c, a, r, q, featuredShare] = await Promise.all([
       db.from("posts").select("*").order("created_at", { ascending: false }),
       db.from("comments").select("*").order("created_at", { ascending: true }),
       db.from("articles").select("*").order("created_at", { ascending: false }),
       db.from("recs").select("*").order("created_at", { ascending: false }),
       db.from("questions").select("*").order("created_at", { ascending: false }),
+      db.from("featured_share").select("url").eq("id", "main").maybeSingle(),
     ]);
-    const err = p.error || c.error || a.error || r.error || q.error;
+    const err = p.error || c.error || a.error || r.error || q.error || featuredShare.error;
     if (err) {
       console.error("Supabase:", err);
       showToast("בעיה בחיבור לענן — ודאי שהרצת את קובץ ה-SQL 🙏");
@@ -84,6 +88,7 @@
     }));
     recs = (r.data || []).map((row) => ({ id: row.id, icon: row.icon, title: row.title, text: row.text, url: row.url, date: row.created_at }));
     questions = (q.data || []).map((row) => ({ id: row.id, name: row.name, email: row.email, text: row.text, answer: row.answer || "", date: row.created_at }));
+    if (featuredShare.data) shareLink.href = featuredShare.data.url;
   }
 
   /* ----- עזרים ----- */
@@ -380,6 +385,38 @@
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && !loginBackdrop.hidden) loginBackdrop.hidden = true;
+  });
+
+  /* ----- עריכת הקישור המומלץ (נשמר בענן, רק בעלת הבלוג יכולה לערוך) ----- */
+  function closeShareLinkModal() {
+    shareLinkBackdrop.hidden = true;
+    shareLinkForm.reset();
+  }
+
+  document.getElementById("edit-share-link").addEventListener("click", () => {
+    document.getElementById("share-link-url").value = shareLink.href;
+    shareLinkBackdrop.hidden = false;
+    document.getElementById("share-link-url").focus();
+  });
+  document.getElementById("close-share-link-modal").addEventListener("click", closeShareLinkModal);
+  shareLinkBackdrop.addEventListener("click", (e) => {
+    if (e.target === shareLinkBackdrop) closeShareLinkModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !shareLinkBackdrop.hidden) closeShareLinkModal();
+  });
+  shareLinkForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const url = document.getElementById("share-link-url").value.trim();
+    const { error } = await db.from("featured_share").upsert({ id: "main", url });
+    if (error) {
+      console.error("Supabase:", error);
+      showToast("לא ניתן לשמור את הקישור — ודאי שאת מחוברת ושהרצת את קובץ ה-SQL 🙏");
+      return;
+    }
+    shareLink.href = url;
+    closeShareLinkModal();
+    showToast("הקישור המומלץ נשמר ✨");
   });
 
   loginForm.addEventListener("submit", async (e) => {
