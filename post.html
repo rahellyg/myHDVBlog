@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>חיים בקצב שלי | בלוג על ADHD ואימהות</title>
+  <meta name="description" content="בלוג אישי על אימהות, חיים עם ADHD, אתגרים וכלים לחיי היום-יום." />
+  <link id="canonical-link" rel="canonical" href="https://rahellyg.github.io/myHDVBlog/" />
+
+  <!-- שיתוף ברשתות — מתעדכן דינמית לפי הפוסט -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="חיים בקצב שלי" />
+  <meta id="og-title" property="og:title" content="חיים בקצב שלי | בלוג על ADHD ואימהות" />
+  <meta id="og-description" property="og:description" content="בלוג אישי על אימהות, חיים עם ADHD, אתגרים וכלים לחיי היום-יום." />
+  <meta id="og-url" property="og:url" content="https://rahellyg.github.io/myHDVBlog/" />
+  <meta id="og-image" property="og:image" content="https://rahellyg.github.io/myHDVBlog/banner.png" />
+  <meta property="og:locale" content="he_IL" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta id="twitter-title" name="twitter:title" content="חיים בקצב שלי | בלוג על ADHD ואימהות" />
+  <meta id="twitter-description" name="twitter:description" content="בלוג אישי על אימהות, חיים עם ADHD, אתגרים וכלים לחיי היום-יום." />
+  <meta id="twitter-image" name="twitter:image" content="https://rahellyg.github.io/myHDVBlog/banner.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gveret+Levin&family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=20" />
+</head>
+<body>
+
+  <!-- ===== סרגל עליון ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <span class="logo-icon"></span>
+        <span class="logo-text">חיים בקצב שלי</span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html#feed">הפוסטים</a>
+        <a href="index.html#about">קצת עליי</a>
+        <a href="index.html#wellness">חיים בריאים</a>
+        <a href="index.html#qa">שאלה/תשובה</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== הפוסט ===== -->
+  <main class="container single-post" id="post-container" aria-live="polite">
+    <a class="back-link" href="index.html#feed">→ חזרה לכל הפוסטים</a>
+    <p class="empty-state" id="loading-state">טוענת את הפוסט… 🌱</p>
+    <div id="not-found" hidden>
+      <p class="empty-state">לא מצאתי את הפוסט הזה… אולי הוא נמחק? 🙏</p>
+      <p class="empty-state"><a class="back-link" href="index.html#feed">לכל הפוסטים ←</a></p>
+    </div>
+  </main>
+
+  <!-- ===== פוטר ===== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> חיים בקצב שלי — נכתב מהלב (ובין פגישה לצ׳ופר).</p>
+      <p class="footer-credit">נוצר על ידי <a href="https://rahellyg.github.io/busipro/" target="_blank" rel="noopener">ביזנס פרו</a> 💼</p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/post.js?v=1"></script>
+</body>
+</html>

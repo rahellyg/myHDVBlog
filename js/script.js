@@ -185,6 +185,7 @@
   function buildCard(post) {
     const card = document.createElement("article");
     card.className = "post-card";
+    card.id = `post-${post.id}`;
 
     /* מדיה — זיהוי אוטומטי של סוג הקישור */
     const mediaHtml = buildMediaHtml(post);
@@ -199,7 +200,7 @@
           <span class="badge badge-${post.type}">${TYPE_LABELS[post.type]}</span>
           <time datetime="${post.date}">${formatDate(post.date)}</time>
         </div>
-        <h3 class="post-title">${escapeHtml(post.title)}</h3>
+        <h3 class="post-title"><a class="post-title-link" href="post.html?id=${post.id}">${escapeHtml(post.title)}</a></h3>
         <p class="post-content">${escapeHtml(post.content)}</p>
         <div class="post-actions">
           <button class="action-btn like-btn${likedClass}" type="button">
@@ -238,7 +239,7 @@
     const commentsList = card.querySelector(".comments-list");
 
     card.querySelector(".share-btn").addEventListener("click", async () => {
-      const shareUrl = `${location.origin}${location.pathname}#post-${post.id}`;
+      const shareUrl = new URL(`post.html?id=${post.id}`, location.href).href;
       const shareData = {
         title: `${post.title} | חיים בקצב שלי`,
         text: post.content.slice(0, 120) + (post.content.length > 120 ? "…" : ""),
@@ -812,6 +813,16 @@
     }
   });
 
+  /* קישורי שיתוף ישנים (#post-<id>) — גלילה לפוסט והדגשתו */
+  function scrollToHashPost() {
+    const m = location.hash.match(/^#post-(.+)$/);
+    if (!m) return;
+    const el = document.getElementById(`post-${m[1]}`);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.classList.add("highlight");
+  }
+
   async function init() {
     document.getElementById("year").textContent = new Date().getFullYear();
     trackPageView();
@@ -824,6 +835,7 @@
     renderWellness();
     renderRecs();
     renderQA();
+    scrollToHashPost();
   }
   init();
 })();
