@@ -661,6 +661,13 @@ h1, h2, .logo-text {
 
 .footer-credit a:hover { text-decoration: underline; }
 
+.views-counter {
+  font-size: 0.85rem;
+  margin-top: 6px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
 /* ===== חלונית (מודל) ===== */
 .modal-backdrop {
   position: fixed;

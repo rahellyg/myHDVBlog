@@ -208,6 +208,7 @@
           <button class="action-btn comments-toggle" type="button">
             💬 <span class="comments-count">${commentsCount}</span> תגובות
           </button>
+          <button class="action-btn share-btn" type="button" title="שיתוף הפוסט">📤 שיתוף</button>
           <button class="action-btn edit-btn owner-only" type="button" title="עריכת פוסט">✏️</button>
           <button class="action-btn delete-btn owner-only" type="button" title="מחיקת פוסט">🗑️</button>
         </div>
@@ -235,6 +236,27 @@
 
     const commentsBox = card.querySelector(".comments");
     const commentsList = card.querySelector(".comments-list");
+
+    card.querySelector(".share-btn").addEventListener("click", async () => {
+      const shareUrl = `${location.origin}${location.pathname}#post-${post.id}`;
+      const shareData = {
+        title: `${post.title} | חיים בקצב שלי`,
+        text: post.content.slice(0, 120) + (post.content.length > 120 ? "…" : ""),
+        url: shareUrl,
+      };
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (_e) { /* המשתמשת ביטלה */ }
+      } else {
+        try {
+          await navigator.clipboard.writeText(`${shareData.text}\n${shareUrl}`);
+          showToast("הקישור לפוסט הועתק — שתפי איפה שבא לך 📋");
+        } catch (_e) {
+          showToast("לא הצלחתי להעתיק — נסי שוב 🙏");
+        }
+      }
+    });
 
     card.querySelector(".comments-toggle").addEventListener("click", () => {
       commentsBox.hidden = !commentsBox.hidden;
@@ -760,22 +782,43 @@
     showToast("הייבוא הסתיים — התוכן בענן! 🎉");
   }
 
+  /* ----- מעקב כניסות לאתר (נשמר ב-Supabase, גלוי רק לבעלת הבלוג) ----- */
+  async function trackPageView() {
+    try {
+      await db.from("page_views").insert({ path: location.pathname });
+    } catch (_e) { /* טבלת page_views עוד לא קיימת — ראי supabase-setup.sql */ }
+  }
+
+  async function showViewsCount() {
+    const counter = document.getElementById("views-counter");
+    if (!counter) return;
+    const { count, error } = await db.from("page_views").select("*", { count: "exact", head: true });
+    if (error) return;
+    document.getElementById("views-count").textContent = count.toLocaleString("he-IL");
+    counter.hidden = false;
+  }
+
   /* ----- אתחול ----- */
   let importAsked = false;
   db.auth.onAuthStateChange(async (_event, session) => {
     ownerMode = !!session;
     applyOwnerMode();
-    if (ownerMode && !importAsked) {
-      importAsked = true;
-      await importLocalIfWanted();
+    if (ownerMode) {
+      showViewsCount();
+      if (!importAsked) {
+        importAsked = true;
+        await importLocalIfWanted();
+      }
     }
   });
 
   async function init() {
     document.getElementById("year").textContent = new Date().getFullYear();
+    trackPageView();
     const { data } = await db.auth.getSession();
     ownerMode = !!data.session;
     applyOwnerMode();
+    if (ownerMode) showViewsCount();
     await loadAll();
     render();
     renderWellness();

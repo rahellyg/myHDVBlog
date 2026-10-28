@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rahellyg.github.io/myHDVBlog/sitemap.xml
