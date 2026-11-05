@@ -16,4 +16,4 @@ jobs:
           -H "apikey: ${{ secrets.SUPABASE_KEY_MYHDVBLOG }}" \
           -H "Authorization: Bearer ${{ secrets.SUPABASE_KEY_MYHDVBLOG }}" \
           -I
- I WANT TO SCHEDULE
+
